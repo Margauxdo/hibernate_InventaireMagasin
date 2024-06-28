@@ -17,7 +17,7 @@ import java.util.List;
 public class Sale {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.AUTO)
     @Column(name="sale_id")
     private int id;
     @OneToMany

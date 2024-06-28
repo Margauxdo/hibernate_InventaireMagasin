@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public abstract class Article {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="article_id")
     protected int id;
     @Column (name="article_description")

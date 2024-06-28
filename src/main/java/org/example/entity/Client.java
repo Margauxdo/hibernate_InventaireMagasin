@@ -16,13 +16,13 @@ import java.util.List;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="client_id")
     private int id;
     private String name;
     private String email;
     @Column(name="client_saleList")
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "sale_article")
     private List<Sale> saleList;
 
