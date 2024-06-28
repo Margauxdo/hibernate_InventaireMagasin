@@ -25,7 +25,7 @@ public class Sale {
     @Column(name="sale_article")
     private List<Article> listArticles;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="client_id")
     private Client name;
     private SaleCondition condition;

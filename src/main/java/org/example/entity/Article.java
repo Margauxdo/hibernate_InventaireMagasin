@@ -22,7 +22,7 @@ public abstract class Article {
     @Column (name="article_description")
     protected String description;
     @Column (name="article_price")
-    protected Float price;
+    protected float price;
     @Column (name="article_quantity")
     protected int quantity;
     @Column (name="article_dateRenewalStock")

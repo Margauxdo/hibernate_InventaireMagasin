@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "food_article")
+@Table(name = "electronic_article")
 public class ElectronicArticle extends Article {
 
     private LocalTime batteryLife;

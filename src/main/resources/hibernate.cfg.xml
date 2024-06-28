@@ -4,6 +4,12 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <mapping/>
+        <mapping class="org.example.entity.Article"/>
+        <mapping class="org.example.entity.Client"/>
+        <mapping class="org.example.entity.Sale"/>
+        <mapping class="org.example.entity.ElectronicArticle"/>
+        <mapping class="org.example.entity.FoodArticle"/>
+        <mapping class="org.example.entity.ModeArticle"/>
+
     </session-factory>
 </hibernate-configuration>
