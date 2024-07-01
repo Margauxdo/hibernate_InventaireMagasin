@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.entity.Client;
+import org.example.entity.ElectronicArticle;
 import org.example.repository.*;
 
 public class Main {
@@ -8,7 +9,7 @@ public class Main {
 
         RepositoryClient repositoryClient = new RepositoryClient();
 
-        Client client = Client.builder().id(1).name("henry").email("henry@gdkld.com").build();
+        //Client client = Client.builder().id(1).name("henry").email("henry@gdkld.com").build();
         //repositoryClient.createClient(client);
         //System.out.println(repositoryClient.findClientById(1));
         //repositoryClient.findClientById(client.getId());
@@ -17,6 +18,7 @@ public class Main {
 
 
         RepositoryElectronicArticle repositoryElectronicArticle = new RepositoryElectronicArticle();
+
 
         RepositoryFoodArticle repositoryFoodArticle = new RepositoryFoodArticle();
 

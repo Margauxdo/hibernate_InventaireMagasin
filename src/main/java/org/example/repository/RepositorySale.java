@@ -1,6 +1,5 @@
 package org.example.repository;
 
-import org.example.entity.ElectronicArticle;
 import org.example.entity.Sale;
 import org.example.util.SessionfactorySingleton;
 import org.hibernate.Session;
@@ -47,7 +46,7 @@ public class RepositorySale {
         session.close();
         return saleList;
     }
-    public Sale updateSale (Sale sale) {
+    public int updateSale (int sale) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(sale);
@@ -61,5 +60,6 @@ public class RepositorySale {
         session.getTransaction().commit();
 
     }
+
 
 }
