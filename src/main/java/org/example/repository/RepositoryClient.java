@@ -1,6 +1,9 @@
 package org.example.repository;
 
 import org.example.entity.Client;
+import org.example.entity.Sale;
+import org.example.util.Category;
+import org.example.util.SaleCondition;
 import org.example.util.SessionfactorySingleton;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -62,6 +65,15 @@ public class RepositoryClient {
         session.getTransaction().commit();
 
     }
+
+
+    public List<Sale> salesRepport(int id){
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query<Sale> query = session.createQuery("select c.saleList from Client c where c.id=?1 ",Sale.class)
+                .setParameter(1, id);
+        List<Sale> sales = query.getResultList();
+        return sales;
+    }
 }
 
-//cree, affcher la liste, afficher par id, modifié, supprimé

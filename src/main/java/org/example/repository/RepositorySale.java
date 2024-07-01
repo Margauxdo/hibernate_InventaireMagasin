@@ -1,6 +1,7 @@
 package org.example.repository;
 
 import org.example.entity.Sale;
+import org.example.util.Category;
 import org.example.util.SaleCondition;
 import org.example.util.SessionfactorySingleton;
 import org.hibernate.Session;
@@ -81,4 +82,6 @@ public class RepositorySale {
         }
 
     }
+
+
 }
