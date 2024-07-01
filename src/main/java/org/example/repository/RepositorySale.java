@@ -1,6 +1,7 @@
 package org.example.repository;
 
 import org.example.entity.Sale;
+import org.example.util.SaleCondition;
 import org.example.util.SessionfactorySingleton;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,7 +17,7 @@ public class RepositorySale {
         sessionFactory = SessionfactorySingleton.getSessionFactory();
     }
 
-    public Sale createSale (Sale sale) {
+    public Sale createSale(Sale sale) {
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -27,18 +28,18 @@ public class RepositorySale {
         } catch (Exception e) {
             session.getTransaction().rollback();
             return null;
-        }
-        finally {
+        } finally {
             session.close();
         }
     }
 
-    public Sale findSaleById (int id) {
+    public Sale findSaleById(int id) {
         session = sessionFactory.openSession();
-        Sale sale= session.get(Sale.class, id);
+        Sale sale = session.get(Sale.class, id);
         session.close();
         return sale;
     }
+
     public List<Sale> findAllSale() {
         session = sessionFactory.openSession();
         Query<Sale> query = session.createQuery("select S from Sale as S", Sale.class);
@@ -46,14 +47,16 @@ public class RepositorySale {
         session.close();
         return saleList;
     }
-    public int updateSale (int sale) {
+
+    public int updateSale(int sale) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(sale);
         session.getTransaction().commit();
         return sale;
     }
-    public void deleteSale (Sale sale) {
+
+    public void deleteSale(Sale sale) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.delete(sale);
@@ -61,5 +64,21 @@ public class RepositorySale {
 
     }
 
+    public SaleCondition getStatuById(int id) {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query<SaleCondition> query = session.createQuery("select s.condition from Sale s where s.id = :id", SaleCondition.class);
+        query.setParameter("id", id);
+        SaleCondition saleCondition = query.getSingleResult();
+        session.close();
 
+        if (saleCondition != null) {
+            System.out.println("Sale " + id + " : " + saleCondition.getClass());
+            return saleCondition;
+        } else {
+            System.out.println("Sale not found width ID");
+            return null;
+        }
+
+    }
 }
