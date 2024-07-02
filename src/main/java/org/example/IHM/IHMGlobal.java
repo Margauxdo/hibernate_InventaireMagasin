@@ -27,9 +27,13 @@ public class IHMGlobal {
             switch (entry) {
                 case "1"-> ihmArticle.start();
                 case "2"-> ihmClient.start();
-               // case "3" -> ihmSale.start();
+                case "3" -> ihmSale.start();
                 case "4"-> System.exit(0);
-                default -> System.out.println("Invalid option");
+                default -> {
+                    System.out.println("Invalid option");
+                    return;
+                }
+
 
 
             }
