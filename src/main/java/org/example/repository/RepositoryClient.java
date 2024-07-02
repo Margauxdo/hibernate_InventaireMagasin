@@ -40,7 +40,9 @@ public class RepositoryClient {
 
     public Client findClientById (int id) {
         session = sessionFactory.openSession();
-        Client client = session.get(Client.class, id);
+        session.beginTransaction();
+        Client client = session.find(Client.class, id);
+        session.getTransaction().commit();
         session.close();
         return client;
     }
