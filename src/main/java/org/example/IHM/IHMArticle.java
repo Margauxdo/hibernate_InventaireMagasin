@@ -52,7 +52,7 @@ public class IHMArticle {
     public void menuElectronic() {
         String entry;
         while (true) {
-            System.out.print("---Electronic Menu --- ");
+            System.out.println("---Electronic Menu --- ");
             System.out.println("1/Create Article");
             System.out.println("2/Show all Article");
             System.out.println("3/show all Article by id");

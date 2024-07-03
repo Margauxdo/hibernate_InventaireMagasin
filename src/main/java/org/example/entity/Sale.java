@@ -20,8 +20,8 @@ public class Sale {
     @GeneratedValue( strategy = GenerationType.AUTO)
     @Column(name="sale_id")
     private int id;
-    @OneToMany//(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "article_id")
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "sale_id")
     @Column(name="sale_article")
     private List<Article> listArticles;
 

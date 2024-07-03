@@ -22,8 +22,7 @@ public class Client {
     private String name;
     private String email;
     @Column(name="client_saleList")
-    @OneToMany//(mappedBy = "client")
-    @JoinColumn(name = "sale_article")
+    @OneToMany(mappedBy = "name")
     private List<Sale> saleList;
 
 
