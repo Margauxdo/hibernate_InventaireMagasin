@@ -12,7 +12,6 @@ import java.time.LocalTime;
 
 @Entity
 @Data
-@Builder
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor

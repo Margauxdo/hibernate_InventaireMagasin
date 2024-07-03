@@ -23,7 +23,7 @@ public class IHMClient {
         while (true) {
             System.out.println("--- Client Menu---");
             System.out.println("1/ Create client");
-            System.out.println("2/ Show all clients/");
+            System.out.println("2/ Show all clients");
             System.out.println("3/ Show a client by his id/");
             System.out.println("4/ Update client");
             System.out.println("5/ Delete client");

@@ -49,19 +49,33 @@ public class RepositorySale {
         return saleList;
     }
 
-    public int updateSale(int sale) {
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.update(sale);
-        session.getTransaction().commit();
-        return sale;
+    public Sale updateSale(Sale sale) {
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.update(sale);
+            session.getTransaction().commit();
+            return sale;
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            return null;
+        }finally {
+            session.close();
+        }
     }
 
     public void deleteSale(Sale sale) {
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.delete(sale);
-        session.getTransaction().commit();
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.delete(sale);
+            session.getTransaction().commit();
+        }catch (Exception e){
+            session.getTransaction().rollback();
+
+        }finally {
+            session.close();
+        }
 
     }
 

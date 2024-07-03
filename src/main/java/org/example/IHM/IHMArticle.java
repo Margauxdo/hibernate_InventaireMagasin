@@ -76,7 +76,7 @@ public class IHMArticle {
     public void menuFood() {
         String entry;
         while (true) {
-            System.out.print("---Food Menu --- ");
+            System.out.println("---Food Menu --- ");
             System.out.println("1/Create Article");
             System.out.println("2/Show all Article");
             System.out.println("3/show all Article by id");
@@ -100,7 +100,7 @@ public class IHMArticle {
     public void menuMode() {
         String entry;
         while (true) {
-            System.out.print("---Mode Menu --- ");
+            System.out.println("---Mode Menu --- ");
             System.out.println("1/Create Article");
             System.out.println("2/Show all Article");
             System.out.println("3/show all Article by id");
@@ -133,7 +133,10 @@ public class IHMArticle {
         LocalDate dateRenewalStock = LocalDate.now();
 
         ElectronicArticle electronicArticle = ElectronicArticle.builder()
-
+                .description(description)
+                .price(price)
+                .quantity(quantity)
+                .dateRenewalStock(dateRenewalStock)
                 .batteryLife(LocalTime.now())
                 .build();
         electronicArticle = repositoryElectronicArticle.createElectronic(electronicArticle);
@@ -204,12 +207,18 @@ public class IHMArticle {
         float price = sc.nextInt();
         System.out.println("quantity : ");
         int quantity = sc.nextInt();
+        System.out.println("Date renewal stock: ");
+        LocalDate dateRenewalStock = LocalDate.now();
         System.out.println("expiration date: ");
         LocalDate expirationDate = LocalDate.now();
 
         repositoryFoodArticle.createFood(FoodArticle.builder().build());
 
         FoodArticle foodArticle = FoodArticle.builder()
+                .description(description)
+                .price(price)
+                .quantity(quantity)
+                .dateRenewalStock(dateRenewalStock)
                 .expirationDate(LocalDate.now())
                 .build();
         foodArticle = repositoryFoodArticle.createFood(foodArticle);
@@ -273,6 +282,8 @@ public class IHMArticle {
         float price = sc.nextInt();
         System.out.println("quantity : ");
         int quantity = sc.nextInt();
+        System.out.println("Date renewal stock: ");
+        LocalDate dateRenewalStock = LocalDate.now();
         System.out.println("category: ");
         String category = sc.nextLine();
         System.out.println("weight: ");
@@ -281,6 +292,10 @@ public class IHMArticle {
         repositoryModeArticle.createMode(ModeArticle.builder().build());
 
         ModeArticle modeArticle = ModeArticle.builder()
+                .description(description)
+                .price(price)
+                .quantity(quantity)
+                .dateRenewalStock(dateRenewalStock)
                 .category(Category.MAN)
                 .category(Category.WOMAN)
                 .category(Category.CHILDREN)

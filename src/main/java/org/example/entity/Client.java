@@ -22,7 +22,7 @@ public class Client {
     private String name;
     private String email;
     @Column(name="client_saleList")
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany//(mappedBy = "client")
     @JoinColumn(name = "sale_article")
     private List<Sale> saleList;
 

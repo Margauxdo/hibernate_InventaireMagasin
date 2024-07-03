@@ -20,12 +20,12 @@ public class Sale {
     @GeneratedValue( strategy = GenerationType.AUTO)
     @Column(name="sale_id")
     private int id;
-    @OneToMany
+    @OneToMany//(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "article_id")
     @Column(name="sale_article")
     private List<Article> listArticles;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="client_id")
     private Client name;
     private SaleCondition condition;
