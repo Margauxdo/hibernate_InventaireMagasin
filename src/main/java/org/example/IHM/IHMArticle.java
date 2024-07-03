@@ -31,7 +31,7 @@ public class IHMArticle {
     public void start() {
         String entry;
         while (true) {
-            System.out.print("---Article Menu --- ");
+            System.out.println("---Article Menu --- ");
             System.out.println("1/Category Electronic");
             System.out.println("2/ Category Food");
             System.out.println("3/ Category Mode");
@@ -132,9 +132,8 @@ public class IHMArticle {
         System.out.println("Date renewal stock: ");
         LocalDate dateRenewalStock = LocalDate.now();
 
-        repositoryElectronicArticle.createElectronic(ElectronicArticle.builder().build());
-
         ElectronicArticle electronicArticle = ElectronicArticle.builder()
+
                 .batteryLife(LocalTime.now())
                 .build();
         electronicArticle = repositoryElectronicArticle.createElectronic(electronicArticle);

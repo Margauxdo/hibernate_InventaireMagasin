@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.example.util.Category;
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Builder
+@SuperBuilder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

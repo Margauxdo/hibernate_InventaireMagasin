@@ -21,8 +21,7 @@ public class IHMClient {
         public void start() {
         String entry;
         while (true) {
-            System.out.print("--- Client Menu---");
-            System.out.println();
+            System.out.println("--- Client Menu---");
             System.out.println("1/ Create client");
             System.out.println("2/ Show all clients/");
             System.out.println("3/ Show a client by his id/");

@@ -17,24 +17,19 @@ public class IHMSale {
     private Scanner sc;
     private RepositoryClient repositoryClient;
     private RepositorySale repositorySale;
-    //private RepositoryElectronicArticle repositoryElectronicArticle;
-    //private RepositoryFoodArticle repositoryFoodArticle;
-    //private RepositoryModeArticle repositoryModeArticle;
+
 
     public IHMSale(){
         sc = new Scanner(System.in);
         repositoryClient = new RepositoryClient();
         repositorySale = new RepositorySale();
-        //this.repositoryElectronicArticle = new RepositoryElectronicArticle();
-        //this.repositoryFoodArticle = new RepositoryFoodArticle();
-        //this.repositoryModeArticle = new RepositoryModeArticle();
+
 
     }
     public void start() {
         String entry;
         while (true) {
-            System.out.print("--- Sale Menu---");
-            System.out.println();
+            System.out.println("--- Sale Menu---");
             System.out.println("1/ Create sale");
             System.out.println("2/ Show all sale/");
             System.out.println("3/ Show one sale by his id/");
