@@ -16,5 +16,5 @@ public class Main {
 
         IHMGlobal ihmGlobal = new IHMGlobal();
         ihmGlobal.start();
-        }
     }
+}

@@ -17,16 +17,16 @@ import java.util.List;
 public class Sale {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO)
-    @Column(name="sale_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "sale_id")
     private int id;
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "sale_id")
-    @Column(name="sale_article")
+    @Column(name = "sale_article")
     private List<Article> listArticles;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="client_id")
+    @JoinColumn(name = "client_id")
     private Client name;
     private SaleCondition condition;
 }

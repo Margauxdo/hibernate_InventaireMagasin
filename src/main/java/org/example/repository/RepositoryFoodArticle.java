@@ -19,10 +19,9 @@ public class RepositoryFoodArticle {
         sessionFactory = SessionfactorySingleton.getSessionFactory();
 
 
-
     }
 
-    public FoodArticle createFood (FoodArticle foodArticle) {
+    public FoodArticle createFood(FoodArticle foodArticle) {
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -33,18 +32,18 @@ public class RepositoryFoodArticle {
         } catch (Exception e) {
             session.getTransaction().rollback();
             return null;
-        }
-        finally {
+        } finally {
             session.close();
         }
     }
 
-    public FoodArticle findFoodArticleById (int id) {
+    public FoodArticle findFoodArticleById(int id) {
         session = sessionFactory.openSession();
         FoodArticle foodArticle = session.get(FoodArticle.class, id);
         session.close();
         return foodArticle;
     }
+
     public List<FoodArticle> findAllFoodArticle() {
         session = sessionFactory.openSession();
         Query<FoodArticle> query = session.createQuery("select F from FoodArticle as F", FoodArticle.class);
@@ -52,14 +51,16 @@ public class RepositoryFoodArticle {
         session.close();
         return foodArticleList;
     }
-    public FoodArticle updateFoodArticle (FoodArticle foodArticle) {
+
+    public FoodArticle updateFoodArticle(FoodArticle foodArticle) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(foodArticle);
         session.getTransaction().commit();
         return foodArticle;
     }
-    public void deleteFoodArticle (FoodArticle foodArticle) {
+
+    public void deleteFoodArticle(FoodArticle foodArticle) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.delete(foodArticle);
@@ -67,23 +68,21 @@ public class RepositoryFoodArticle {
 
     }
 
-    public void stockArticle (int id, int quantity) {
+    public void restockArticle(int id, int quantity) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         Article article = session.get(Article.class, id);
-        try{
+        try {
             int currentQtity = article.getQuantity();
             int newQtity = currentQtity + quantity;
             article.setQuantity(newQtity);
             article.setDateRenewalStock(LocalDate.now());
             session.update(article);
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-
 
 
 }

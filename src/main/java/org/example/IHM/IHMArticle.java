@@ -58,6 +58,7 @@ public class IHMArticle {
             System.out.println("3/show all Article by id");
             System.out.println("4/Update Article");
             System.out.println("5/Delete Article");
+            System.out.println("6/Exit");
             entry = sc.nextLine();
             switch (entry) {
                 case "1" -> createArticleElectronic();
@@ -82,6 +83,7 @@ public class IHMArticle {
             System.out.println("3/show all Article by id");
             System.out.println("4/Update Article");
             System.out.println("5/Delete Article");
+            System.out.println("6/Exit");
             entry = sc.nextLine();
             switch (entry) {
                 case "1" -> createArticleFood();
@@ -106,6 +108,7 @@ public class IHMArticle {
             System.out.println("3/show all Article by id");
             System.out.println("4/Update Article");
             System.out.println("5/Delete Article");
+            System.out.println("6/Exit");
             entry = sc.nextLine();
             switch (entry) {
                 case "1" -> createArticleMode();
@@ -198,7 +201,6 @@ public class IHMArticle {
 
 
 
-
     private void createArticleFood() {
         System.out.println("--Create Food Article---");
         System.out.println("article description: ");
@@ -230,7 +232,8 @@ public class IHMArticle {
         List<FoodArticle> foodArticleList = repositoryFoodArticle.findAllFoodArticle();
         foodArticleList.forEach(System.out::println);
     }
-    private void showArticleFoodById () {
+
+    private void showArticleFoodById() {
         try {
             System.out.println("--Show Food articles by Id---");
             System.out.println("Id: ");
@@ -243,30 +246,30 @@ public class IHMArticle {
         }
     }
 
-    private void updateArticleFood () {
-            System.out.println("--Update Food---");
-            System.out.println("id: ");
+    private void updateArticleFood() {
+        System.out.println("--Update Food---");
+        System.out.println("id: ");
 
-            int id = Integer.parseInt(sc.nextLine());
+        int id = Integer.parseInt(sc.nextLine());
 
-            FoodArticle foodArticle = repositoryFoodArticle.findFoodArticleById(id);
-            System.out.println("article description : " + foodArticle.getDescription());
-            System.out.println("new description: ");
-            String newdescription = sc.nextLine();
+        FoodArticle foodArticle = repositoryFoodArticle.findFoodArticleById(id);
+        System.out.println("article description : " + foodArticle.getDescription());
+        System.out.println("new description: ");
+        String newdescription = sc.nextLine();
 
-            System.out.println("price : " + foodArticle.getDescription());
-            int newPrice = sc.nextInt();
-            System.out.println("quantity : " + foodArticle.getDescription());
-            int newQuantity = sc.nextInt();
-            System.out.println("date renewal stock : " + foodArticle.getDescription());
-            LocalDate expirationDate = LocalDate.now();
+        System.out.println("price : " + foodArticle.getDescription());
+        int newPrice = sc.nextInt();
+        System.out.println("quantity : " + foodArticle.getDescription());
+        int newQuantity = sc.nextInt();
+        System.out.println("date renewal stock : " + foodArticle.getDescription());
+        LocalDate expirationDate = LocalDate.now();
 
 
-            foodArticle = repositoryFoodArticle.updateFoodArticle(foodArticle);
-            System.out.println("new article: " + foodArticle);
-        }
+        foodArticle = repositoryFoodArticle.updateFoodArticle(foodArticle);
+        System.out.println("new article: " + foodArticle);
+    }
 
-    private void deleteArticleFood () {
+    private void deleteArticleFood() {
         System.out.println("--Delete Food article---");
         System.out.println("Id: ");
         int id = Integer.parseInt(sc.nextLine());
@@ -274,7 +277,9 @@ public class IHMArticle {
         repositoryFoodArticle.deleteFoodArticle(foodArticle);
     }
 
-    private void createArticleMode () {
+
+
+    private void createArticleMode() {
         System.out.println("--Create Food Article---");
         System.out.println("article description: ");
         String description = sc.nextLine();
@@ -304,12 +309,14 @@ public class IHMArticle {
         modeArticle = repositoryModeArticle.createMode(modeArticle);
         System.out.println("modearticle created: " + modeArticle);
     }
-    private void showAllArticleMode () {
+
+    private void showAllArticleMode() {
         System.out.println("--Show All article---");
         List<ModeArticle> modeArticleList = repositoryModeArticle.findAllModeArticle();
         modeArticleList.forEach(System.out::println);
     }
-    private void showArticleModeById () {
+
+    private void showArticleModeById() {
         try {
             System.out.println("--Show Mode articles by Id---");
             System.out.println("Id: ");
@@ -322,7 +329,8 @@ public class IHMArticle {
         }
 
     }
-    private void updateArticleMode () {
+
+    private void updateArticleMode() {
         System.out.println("--Update Mode---");
         System.out.println("id: ");
 
@@ -348,12 +356,14 @@ public class IHMArticle {
 
     }
 
-    private void deleteArticleMode () {
+    private void deleteArticleMode() {
         System.out.println("--Delete Mode article---");
         System.out.println("Id: ");
         int id = Integer.parseInt(sc.nextLine());
         ModeArticle modeArticle = repositoryModeArticle.findModeArticleById(id);
         repositoryModeArticle.deleteModeArticle(modeArticle);
     }
-    }
+
+
+}
 

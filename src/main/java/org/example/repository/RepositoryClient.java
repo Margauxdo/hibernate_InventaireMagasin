@@ -21,7 +21,7 @@ public class RepositoryClient {
         sessionFactory = SessionfactorySingleton.getSessionFactory();
     }
 
-    public Client createClient (Client client) {
+    public Client createClient(Client client) {
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -32,13 +32,12 @@ public class RepositoryClient {
         } catch (Exception e) {
             session.getTransaction().rollback();
             return null;
-        }
-        finally {
+        } finally {
             session.close();
         }
     }
 
-    public Client findClientById (int id) {
+    public Client findClientById(int id) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         Client client = session.find(Client.class, id);
@@ -46,6 +45,7 @@ public class RepositoryClient {
         session.close();
         return client;
     }
+
     public List<Client> findAllClients() {
         session = sessionFactory.openSession();
         Query<Client> query = session.createQuery("select C from Client as C", Client.class);
@@ -53,14 +53,16 @@ public class RepositoryClient {
         session.close();
         return clients;
     }
-    public Client updateClient (Client client) {
+
+    public Client updateClient(Client client) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(client);
         session.getTransaction().commit();
         return client;
     }
-    public void deleteClient (Client client) {
+
+    public void deleteClient(Client client) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.delete(client);
@@ -69,10 +71,10 @@ public class RepositoryClient {
     }
 
 
-    public List<Sale> salesRepport(int id){
+    public List<Sale> salesRepport(int id) {
         session = sessionFactory.openSession();
         session.beginTransaction();
-        Query<Sale> query = session.createQuery("select c.saleList from Client c where c.id=?1 ",Sale.class)
+        Query<Sale> query = session.createQuery("select c.saleList from Client c where c.id=?1 ", Sale.class)
                 .setParameter(1, id);
         List<Sale> sales = query.getResultList();
         return sales;

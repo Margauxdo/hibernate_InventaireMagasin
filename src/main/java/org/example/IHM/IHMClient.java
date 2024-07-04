@@ -2,7 +2,9 @@ package org.example.IHM;
 
 
 import org.example.entity.Client;
+import org.example.entity.Sale;
 import org.example.repository.RepositoryClient;
+import org.example.util.SaleCondition;
 
 import java.util.List;
 import java.util.Scanner;
@@ -18,7 +20,8 @@ public class IHMClient {
         repositoryClient = new RepositoryClient();
 
     }
-        public void start() {
+
+    public void start() {
         String entry;
         while (true) {
             System.out.println("--- Client Menu---");
@@ -34,18 +37,20 @@ public class IHMClient {
                 case "2" -> showAllClient();
                 case "3" -> showClientById();
                 case "4" -> updateClient();
-                 case "5" -> deleteClient();
+                case "5" -> deleteClient();
                 default -> {
                     System.out.println("Invalid entry");
                     return;
                 }
             }
 
-             }
-
-
         }
-    private void createClient(){
+
+
+    }
+
+
+    private void createClient() {
         System.out.println("--Create Client---");
         System.out.println("Name: ");
         String name = sc.nextLine();
@@ -57,52 +62,56 @@ public class IHMClient {
                 .email(email)
                 .build();
         client = repositoryClient.createClient(client);
-        System.out.println("client: " +client);
+        System.out.println("client: " + client);
     }
-    private void showAllClient( ){
+
+    private void showAllClient() {
         System.out.println("--Show All Clients---");
         List<Client> clients = repositoryClient.findAllClients();
         clients.forEach(System.out::println);
     }
-    private void showClientById(){
+
+    private void showClientById() {
         try {
             System.out.println("--Show Client by Id---");
             System.out.println("Id: ");
             int id = Integer.parseInt(sc.nextLine());
 
             System.out.println(repositoryClient.findClientById(id));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
-    private void updateClient(){
+
+    private void updateClient() {
         System.out.println("--Update Client---");
         System.out.println("id: ");
         int id = Integer.parseInt(sc.nextLine());
 
         Client client = repositoryClient.findClientById(id);
-        System.out.println("nom actuel : "+client.getName());
+        System.out.println("nom actuel : " + client.getName());
         System.out.println("veuillez entrer le nouveau nom :");
         String name = sc.nextLine();
         client.setName(name);
-        System.out.println("email actuel : "+client.getEmail());
+        System.out.println("email actuel : " + client.getEmail());
         System.out.println("veuillez entrer le nouveau email :");
         String email = sc.nextLine();
         client.setEmail(email);
 
         client = repositoryClient.updateClient(client);
-        System.out.println("new client: "+client.getName());
+        System.out.println("new client: " + client.getName());
 
     }
-    private void deleteClient(){
+
+    private void deleteClient() {
         System.out.println("--Delete Client---");
         System.out.println("Id: ");
         int id = Integer.parseInt(sc.nextLine());
         Client client = repositoryClient.findClientById(id);
         repositoryClient.deleteClient(client);
-        }
+    }
+
 
 
 

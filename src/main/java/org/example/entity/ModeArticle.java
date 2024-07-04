@@ -15,8 +15,8 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="mode_article")
-public class ModeArticle extends Article{
+@Table(name = "mode_article")
+public class ModeArticle extends Article {
 
     private Category category;
     private int weight;

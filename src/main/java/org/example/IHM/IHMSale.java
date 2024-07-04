@@ -19,13 +19,14 @@ public class IHMSale {
     private RepositorySale repositorySale;
 
 
-    public IHMSale(){
+    public IHMSale() {
         sc = new Scanner(System.in);
         repositoryClient = new RepositoryClient();
         repositorySale = new RepositorySale();
 
 
     }
+
     public void start() {
         String entry;
         while (true) {
@@ -35,7 +36,7 @@ public class IHMSale {
             System.out.println("3/ Show one sale by his id/");
             System.out.println("4/ Update sale");
             System.out.println("5/ Delete sale");
-            System.out.println("6/ Exit");
+            System.out.println("7/ Exit");
             entry = sc.nextLine();
             switch (entry) {
                 case "1" -> createSale();
@@ -53,7 +54,8 @@ public class IHMSale {
 
 
     }
-    private void createSale(){
+
+    private void createSale() {
         System.out.println("--Create Sale---");
         System.out.println("Client ID: ");
         int clientId = Integer.parseInt(sc.nextLine());
@@ -63,25 +65,27 @@ public class IHMSale {
         System.out.println("Sale articles: ");
         List<Article> articleList = new ArrayList<>();
 
-       Sale sale = Sale.builder()
-               .name(client)
-               .condition(condition)
+        Sale sale = Sale.builder()
+                .name(client)
+                .condition(condition)
                 .listArticles(articleList)
                 .build();
         sale = repositorySale.createSale(sale);
-        System.out.println("sale created: " +sale);
+        System.out.println("sale created: " + sale);
     }
-    private void showAllSale( ){
+
+    private void showAllSale() {
         System.out.println("--Show All Sale---");
         List<Sale> sales = repositorySale.findAllSale();
         sales.forEach(sale -> {
             System.out.println("Sale ID: " + sale.getId());
-            System.out.println("Client: "+ (sale.getName() != null ? sale.getName() : ""));
-            System.out.println("Condition: "+ sale.getCondition());
-            System.out.println("ListArticles: "+ sale.getListArticles());
+            System.out.println("Client: " + (sale.getName() != null ? sale.getName() : ""));
+            System.out.println("Condition: " + sale.getCondition());
+            System.out.println("ListArticles: " + sale.getListArticles());
         });
     }
-    private void showSaleById(){
+
+    private void showSaleById() {
         try {
             System.out.println("--Show Sale by Id---");
             System.out.println("Id: ");
@@ -89,45 +93,59 @@ public class IHMSale {
             Sale sale = repositorySale.findSaleById(id);
 
             System.out.println(repositorySale.findSaleById(id));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
+
     private void updateSale() {
         System.out.println("--Update Sale---");
         System.out.println("id: ");
 
-            int id = Integer.parseInt(sc.nextLine());
+        int id = Integer.parseInt(sc.nextLine());
 
-            Sale sale = repositorySale.findSaleById(id);
+        Sale sale = repositorySale.findSaleById(id);
 
-            if (sale != null){
-                System.out.println("Client Id: "+sale.getName().getId());
-                System.out.println("new client ID: ");
-                int newClientId = Integer.parseInt(sc.nextLine());
-                Client newClient = repositoryClient.findClientById(newClientId);
+        if (sale != null) {
+            System.out.println("Client Id: " + sale.getName().getId());
+            System.out.println("new client ID: ");
+            int newClientId = Integer.parseInt(sc.nextLine());
+            Client newClient = repositoryClient.findClientById(newClientId);
 
-                System.out.println("condition : " + sale.getCondition());
-                System.out.println("New Condition (INPROGRESS, FINISHED, CANCELLED): ");
-                SaleCondition newCondition = SaleCondition.valueOf(sc.nextLine().toUpperCase());
+            System.out.println("condition : " + sale.getCondition());
+            System.out.println("New Condition (INPROGRESS, FINISHED, CANCELLED): ");
+            SaleCondition newCondition = SaleCondition.valueOf(sc.nextLine().toUpperCase());
 
-                sale.setName(newClient);
-                sale.setCondition(newCondition);
-                sale=repositorySale.updateSale(sale);
-                System.out.println("Updates sale: "+sale);
-            }else {
-                System.out.println("Sale not found");
-            }
-
+            sale.setName(newClient);
+            sale.setCondition(newCondition);
+            sale = repositorySale.updateSale(sale);
+            System.out.println("Updates sale: " + sale);
+        } else {
+            System.out.println("Sale not found");
         }
 
-    private void deleteSale(){
+    }
+
+    private void deleteSale() {
         System.out.println("--Delete Sale---");
         System.out.println("Id: ");
         int id = Integer.parseInt(sc.nextLine());
         Sale sale = repositorySale.findSaleById(id);
         repositorySale.deleteSale(sale);
     }
+
+    /*private void getStatutById() {
+        System.out.println("--Get Statut---");
+        System.out.println("Id: ");
+        int id = Integer.parseInt(sc.nextLine());
+        SaleCondition saleCondition = repositorySale.getStatuById(id);
+
+        if (saleCondition != null) {
+            System.out.println("sale statut: " + id + " : " + saleCondition);
+        } else {
+            System.out.println("No sale statut");
+        }
+
+    }*/
 }

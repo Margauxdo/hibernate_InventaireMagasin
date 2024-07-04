@@ -9,12 +9,14 @@ public class IHMGlobal {
     private IHMArticle ihmArticle;
     private IHMClient ihmClient;
     private IHMSale ihmSale;
+
     public IHMGlobal() {
         ihmArticle = new IHMArticle();
         ihmClient = new IHMClient();
         ihmSale = new IHMSale();
         sc = new Scanner(System.in);
     }
+
     public void start() {
         String entry;
         while (true) {
@@ -25,15 +27,14 @@ public class IHMGlobal {
             System.out.println("4.Exit");
             entry = sc.nextLine();
             switch (entry) {
-                case "1"-> ihmArticle.start();
-                case "2"-> ihmClient.start();
+                case "1" -> ihmArticle.start();
+                case "2" -> ihmClient.start();
                 case "3" -> ihmSale.start();
-                case "4"-> System.exit(0);
+                case "4" -> System.exit(0);
                 default -> {
                     System.out.println("Invalid option");
                     return;
                 }
-
 
 
             }

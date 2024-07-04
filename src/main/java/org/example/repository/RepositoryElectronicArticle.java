@@ -22,7 +22,7 @@ public class RepositoryElectronicArticle {
     }
 
 
-    public ElectronicArticle createElectronic (ElectronicArticle electronicArticle) {
+    public ElectronicArticle createElectronic(ElectronicArticle electronicArticle) {
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -33,18 +33,18 @@ public class RepositoryElectronicArticle {
         } catch (Exception e) {
             session.getTransaction().rollback();
             return null;
-        }
-        finally {
+        } finally {
             session.close();
         }
     }
 
-    public ElectronicArticle findElectronicArticleById (int id) {
+    public ElectronicArticle findElectronicArticleById(int id) {
         session = sessionFactory.openSession();
-        ElectronicArticle electronicArticle= session.get(ElectronicArticle.class, id);
+        ElectronicArticle electronicArticle = session.get(ElectronicArticle.class, id);
         session.close();
         return electronicArticle;
     }
+
     public List<ElectronicArticle> findAllElectronicArticle() {
         session = sessionFactory.openSession();
         Query<ElectronicArticle> query = session.createQuery("select E from ElectronicArticle as E", ElectronicArticle.class);
@@ -52,14 +52,16 @@ public class RepositoryElectronicArticle {
         session.close();
         return electronicArticleList;
     }
-    public ElectronicArticle updateElectronicArticle (ElectronicArticle electronicArticle) {
+
+    public ElectronicArticle updateElectronicArticle(ElectronicArticle electronicArticle) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(electronicArticle);
         session.getTransaction().commit();
         return electronicArticle;
     }
-    public void deleteElectronicArticle (ElectronicArticle electronicArticle) {
+
+    public void deleteElectronicArticle(ElectronicArticle electronicArticle) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.delete(electronicArticle);
@@ -67,18 +69,17 @@ public class RepositoryElectronicArticle {
 
     }
 
-    public void stockArticle (int id, int quantity) {
+    public void restockArticle(int id, int quantity) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         Article article = session.get(Article.class, id);
-        try{
+        try {
             int currentQtity = article.getQuantity();
             int newQtity = currentQtity + quantity;
             article.setQuantity(newQtity);
             article.setDateRenewalStock(LocalDate.now());
             session.update(article);
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

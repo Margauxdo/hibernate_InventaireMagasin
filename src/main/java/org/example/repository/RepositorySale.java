@@ -56,10 +56,10 @@ public class RepositorySale {
             session.update(sale);
             session.getTransaction().commit();
             return sale;
-        }catch (Exception e){
+        } catch (Exception e) {
             session.getTransaction().rollback();
             return null;
-        }finally {
+        } finally {
             session.close();
         }
     }
@@ -70,10 +70,10 @@ public class RepositorySale {
             session.beginTransaction();
             session.delete(sale);
             session.getTransaction().commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             session.getTransaction().rollback();
 
-        }finally {
+        } finally {
             session.close();
         }
 
@@ -96,7 +96,6 @@ public class RepositorySale {
         }
 
     }
-
 
 
 }

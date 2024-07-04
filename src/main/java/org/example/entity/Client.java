@@ -15,16 +15,16 @@ import java.util.List;
 @NoArgsConstructor
 public class Client {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="client_id")
+    @Column(name = "client_id")
     private int id;
     private String name;
     private String email;
-    @Column(name="client_saleList")
+    @Column(name = "client_saleList")
     @OneToMany(mappedBy = "name")
     private List<Sale> saleList;
-
 
 
 }
